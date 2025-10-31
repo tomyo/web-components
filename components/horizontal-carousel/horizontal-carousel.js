@@ -18,10 +18,7 @@ customElements.define(
     connectedCallback() {
       if (this.children.length < 2) return;
       for (const [index, item] of Object.entries([...this.children])) {
-        if (!item.id)
-          item.id = `carousel-${this.dataset.instance}-item-${
-            parseInt(index) + 1
-          }`;
+        if (!item.id) item.id = `carousel-${this.dataset.instance}-item-${parseInt(index) + 1}`;
         item.setAttribute("part", "carousel-image");
       }
 
@@ -43,13 +40,11 @@ customElements.define(
     handleEvent(event) {
       if (event.type !== "click" || !event.target.href) return;
       event.preventDefault();
-      document
-        .querySelector(event.target.getAttribute("href"))
-        ?.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest", // Don't scroll vertically
-          inline: "center", // Center horizontally in carousel
-        });
+      document.querySelector(event.target.getAttribute("href"))?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest", // Don't scroll vertically
+        inline: "center", // Center horizontally in carousel
+      });
     }
   }
 );
